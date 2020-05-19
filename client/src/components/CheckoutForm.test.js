@@ -1,5 +1,11 @@
 import React from "react";
-import { render, getByText } from "@testing-library/react";
+import {
+    render,
+    fireEvent,
+    getByTestId,
+    getByText,
+} from "@testing-library/react";
+
 import CheckoutForm from "./CheckoutForm";
 
 // Write up the two tests here and make sure they are testing what the title shows
@@ -17,14 +23,18 @@ test("form shows success message on submit with form details", async () => {
     const city = "adjkfsdhf";
     const state = "New York";
     const zip = "11220";
-    const { getByTestId } = render(<CheckoutForm />);
-    const formSubmit = getByTestId("form");
+    const { getByTestId, getByText } = render(<CheckoutForm />);
+    const formSubmit = getByTestId("submit");
+    fireEvent.click(formSubmit)
+    
 
+    // It's about time
+    const success = getByTestId(/successMessage/i);
 
-    fireEvent.click(formSubmit);
+ 
+    expect(success).toBeInTheDocument();
+
 });
-
-
 
 
 

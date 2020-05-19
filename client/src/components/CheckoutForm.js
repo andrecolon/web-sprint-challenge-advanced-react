@@ -82,7 +82,7 @@ const CheckoutForm = (props) => {
           Zip:
           <input name="zip" value={values.zip} onChange={handleChanges} />
         </label>
-        <button id="submit">Checkout</button>
+        <button data-testid="submit">Checkout</button>
       </form>
 
       {showSuccessMessage && (
